@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import{MovieService}from '../movie.service';
 import {Movie } from "src/movie.model";
 import { ThrowStmt } from '@angular/compiler';
@@ -12,6 +12,8 @@ export class ListMoviesComponent implements OnInit {
 
   movies=[];
   private currentMovie:Movie;
+
+  @Output() onSelectedMovie: EventEmitter<Movie>;
 
   constructor(private movieService:MovieService) { 
     this.onSelectedMovie=new EventEmitter();
@@ -34,6 +36,6 @@ export class ListMoviesComponent implements OnInit {
     return movie.title === this.currentMovie.title;
   }
 
-  @Output() onSelectedMovie: EventEmitter<Movie>;
+  
 
 }
